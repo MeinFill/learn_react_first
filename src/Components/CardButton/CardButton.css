@@ -1,0 +1,16 @@
+.card-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    background-color: #FFFFFF08;
+    border: none;
+    transition: background 0.25s;
+    cursor: pointer;
+    min-width: 400px;
+    border-radius: 5px;
+}
+
+.card-button:hover {
+    background-color: #FFFFFF1A;
+}

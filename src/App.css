@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background: #181818;
+    margin: 0;
+    display: flex;
+    min-width: 100vh;
+    min-height: 100vh;
+}
+
+.logo {
+  height: 130px;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.app {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 20px 10px;
+  padding: 0;
+  gap: 70px;
+  width: 100%;
+}
+
+p {
+  pointer-events: none;
+}
+
+text {
+  pointer-events: none;
+}
+
+img {
+  pointer-events: none;
+}
