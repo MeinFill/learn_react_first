@@ -1,6 +1,7 @@
 
 import './JournalItemForm.css'
 import { useEffect, useState } from 'react'
+import {LS_NOTE_DATA} from '../../constants.jsx'
 
 export interface IJournalItem {id: string, title: string, date: Date, text: string, body: string, metki: string }
 
@@ -42,9 +43,9 @@ function JournalItemForm({data, setData}: {data: IJournalItem, setData: React.Di
     }
     
     function archiveItem(event: React.MouseEvent<HTMLButtonElement>) {
-        const data = JSON.parse(localStorage.getItem('data') ?? '');
+        const data = JSON.parse(localStorage.getItem(LS_NOTE_DATA) ?? '');
         const newData = data.filter((dataItem: IJournalItem) => dataItem.id != event.currentTarget.parentElement?.id);
-        localStorage.setItem('data', JSON.stringify(newData));
+        localStorage.setItem(LS_NOTE_DATA, JSON.stringify(newData));
 
         setData(newData);
     }
@@ -53,16 +54,17 @@ function JournalItemForm({data, setData}: {data: IJournalItem, setData: React.Di
         event.preventDefault();
 
         const newData = new FormData(event.currentTarget);
-        const data = JSON.parse(localStorage.getItem('data') ?? '');
-        const currentId = Number(event.currentTarget.id) - 1;
+        const data = JSON.parse(localStorage.getItem(LS_NOTE_DATA) ?? '');
+        const currentItem = data.find((item: IJournalItem) => item.id === event.currentTarget.id);
+        console.log(currentItem);
 
-        data[currentId].title = newData.get('title');
-        data[currentId].date = new Date(newData.get('date') as string).toISOString();
-        data[currentId].text = newData.get('desc');
-        data[currentId].metki = newData.get('metki');
-        data[currentId].body = newData.get('textArea');
+        currentItem.title = newData.get('title');
+        currentItem.date = new Date(newData.get('date') as string).toISOString();
+        currentItem.text = newData.get('desc');
+        currentItem.metki = newData.get('metki');
+        currentItem.body = newData.get('textArea');
 
-        localStorage.setItem('data', JSON.stringify(data));
+        localStorage.setItem(LS_NOTE_DATA, JSON.stringify(data));
 
         setData(data);
     }

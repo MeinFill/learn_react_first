@@ -1,15 +1,16 @@
 import './addJournalItemButton.css'
 
 import {type IJournalItem} from "../../Components/JournalItem/JournalItem.tsx"
+import {LS_NOTE_DATA} from '../../constants.jsx'
 
 function addJournalItemButton({setData}: {setData: React.Dispatch<React.SetStateAction<IJournalItem[]>>}) {
 
   function addJournalItemButtonClick(){
-    const data = JSON.parse(localStorage.getItem('data') ?? '');
+    const data = JSON.parse(localStorage.getItem(LS_NOTE_DATA) ?? '');
     const lastItem = data[data.length-1];
     if (lastItem) data.push({id: parseInt(lastItem.id) + 1, title: 'Новая заметка', date: new Date().toISOString(), text: 'Новое описание', body: ''});
     else data.push({id: 1, title: 'Новая заметка', date: new Date().toISOString(), text: 'Новое описание', body: ''});
-    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem(LS_NOTE_DATA, JSON.stringify(data));
 
     setData(data);
   }

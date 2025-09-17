@@ -1,0 +1,1 @@
+export const LS_NOTE_DATA = 'data'

@@ -4,7 +4,6 @@ import JournalItemForm from '../../Components/JournalItemForm/JournalItemForm.ts
 import {type IJournalItem} from "../../Components/JournalItem/JournalItem.tsx"
 
 function RightPanel({data, selectedId, setData}: {data: Array<IJournalItem>, selectedId?: number, setData: React.Dispatch<React.SetStateAction<IJournalItem[]>>}) {
-  console.log('🎯 RightPanel render. selectedId:', selectedId);
   const selectedItem = data.find(item => Number(item.id) === selectedId);
   return (
     <div className="rightPanel">
