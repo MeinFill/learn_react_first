@@ -55,7 +55,7 @@ function JournalItemForm({data, setData}: {data: IJournalItem, setData: React.Di
 
         const newData = new FormData(event.currentTarget);
         const data = JSON.parse(localStorage.getItem(LS_NOTE_DATA) ?? '');
-        const currentItem = data.find((item: IJournalItem) => item.id === event.currentTarget.id);
+        const currentItem = data.find((item: IJournalItem) => Number(item.id) === Number(event.currentTarget.id));
         console.log(currentItem);
 
         currentItem.title = newData.get('title');
