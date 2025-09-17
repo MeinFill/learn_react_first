@@ -2,6 +2,9 @@
 import './JournalItemForm.css'
 import { useEffect, useState } from 'react'
 import {LS_NOTE_DATA} from '../../constants.jsx'
+import metkiImg from "../../assets/images/Metki.svg"
+import kalendar from "../../assets/images/Kalendar.svg"
+import archive from "../../assets/images/Archive.svg"
 
 export interface IJournalItem {id: string, title: string, date: Date, text: string, body: string, metki: string }
 
@@ -74,21 +77,21 @@ function JournalItemForm({data, setData}: {data: IJournalItem, setData: React.Di
             <div id={data.id} className='head'>
                 <input name='title' className='title' value={title} onChange={titleChange}></input>
                 <button type='button' className='archiveButton' onClick={archiveItem}>
-                    <img className='archive' src='./src/assets/images/Archive.svg'></img>
+                    <img className='archive' src={archive}></img>
                 </button>
             </div>
             <div className='input'>
-                <img className='imageInput' src='./src/assets/images/Kalendar.svg'></img>
+                <img className='imageInput' src={kalendar}></img>
                 <p className='textInput'>Дата</p>
                 <input name='date' className='inputDate' type='date' value={date.toISOString().split('T')[0]} onChange={dateChange}></input>
             </div>
             <div className='input'>
-                <img className='imageInput' src='./src/assets/images/Metki.svg'></img>
+                <img className='imageInput' src={metkiImg}></img>
                 <p className='textInput'>Метки</p>
                 <input name='metki' className='metki' type='text' value={metki} onChange={metkiChange}></input>
             </div>
             <div className='input'>
-                <img className='imageInput' src='./src/assets/images/Metki.svg'></img>
+                <img className='imageInput' src={metkiImg}></img>
                 <p className='textInput'>Описание</p>
                 <input name='desc' className='desc' type='text' value={desc} onChange={descChange}></input>
             </div>

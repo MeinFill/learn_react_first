@@ -2,6 +2,7 @@ import './addJournalItemButton.css'
 
 import {type IJournalItem} from "../../Components/JournalItem/JournalItem.tsx"
 import {LS_NOTE_DATA} from '../../constants.jsx'
+import imgSrc from "../../assets/images/Frame.svg"
 
 function addJournalItemButton({setData}: {setData: React.Dispatch<React.SetStateAction<IJournalItem[]>>}) {
 
@@ -17,7 +18,7 @@ function addJournalItemButton({setData}: {setData: React.Dispatch<React.SetState
 
   return (
       <button className='newCardButton' onClick={addJournalItemButtonClick}>
-        <img className='addItemImage' src='./src/assets/images/Frame.svg'></img>
+        <img className='addItemImage' src={imgSrc}></img>
         <p className='addItem'>Добавить заметку</p>
       </button>
   )

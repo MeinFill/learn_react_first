@@ -3,7 +3,7 @@ import CardButton from '../../Components/CardButton/CardButton.tsx'
 import JournalItem from '../../Components/JournalItem/JournalItem.tsx'
 import JournalItemsList from '../../Components/JournalItemsList/JournalItemsList.tsx'
 import AddJournalItemButton from '../../Components/addJournalItemButton/addJournalItemButton.tsx'
-
+import imgSrc from "../../assets/images/Group.svg"
 import {type IJournalItem} from "../../Components/JournalItem/JournalItem.tsx"
 
 function LeftPanel({data, setData, setSelectedId}: {data: Array<IJournalItem>, setData: React.Dispatch<React.SetStateAction<IJournalItem[]>>, setSelectedId: (id: number) => void}) {
@@ -19,7 +19,7 @@ function LeftPanel({data, setData, setSelectedId}: {data: Array<IJournalItem>, s
   
   return (
     <div className="leftPanel">
-      <img className='logo' src='./src/assets/images/Group.svg'></img>
+      <img className='logo' src={imgSrc}></img>
       <AddJournalItemButton setData={setData}/>
       <JournalItemsList>
         {data.sort(sortItems).map(el => (
