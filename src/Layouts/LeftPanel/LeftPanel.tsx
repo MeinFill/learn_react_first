@@ -7,12 +7,22 @@ import AddJournalItemButton from '../../Components/addJournalItemButton/addJourn
 import {type IJournalItem} from "../../Components/JournalItem/JournalItem.tsx"
 
 function LeftPanel({data, setData, setSelectedId}: {data: Array<IJournalItem>, setData: React.Dispatch<React.SetStateAction<IJournalItem[]>>, setSelectedId: (id: number) => void}) {
+  
+  const sortItems = (a: IJournalItem, b: IJournalItem) => {
+    if (a.date < b.date){
+      return 1;
+    }
+    else{
+      return -1;
+    }
+  }
+  
   return (
     <div className="leftPanel">
       <img className='logo' src='./src/assets/images/Group.svg'></img>
       <AddJournalItemButton setData={setData}/>
       <JournalItemsList>
-        {data.map(el => (
+        {data.sort(sortItems).map(el => (
         <CardButton id={el.id} setSelectedId={setSelectedId}>
           <JournalItem data={el} />
         </CardButton>
